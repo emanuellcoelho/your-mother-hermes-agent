@@ -12,14 +12,13 @@ the change goes.
 
 | Path | Owns | Never here |
 | --- | --- | --- |
-| `plow-pbc/plow-hermes-agent` (base) | boot, `plow-init`, gateway config, base persona, plugin pin | anything Mother-specific |
+| `plow-pbc/plow-hermes-agent` (base) | boot, `plow-init`, gateway config, base persona, plugin pin, agent-index reporter | anything Mother-specific |
 | `persona.md` | Mother's voice: dry charge, the one-word approval, honesty about what was *said* vs *done*, photo escalation etiquette | per-turn plumbing, tool how-tos |
 | `skills/mother-checkup/` | the ledger: models, store, config, streaks, checkup, recap — and its SKILL.md | chat delivery (post_chat.py is its only exception, mechanically) |
 | `skills/mother-recap/` | the Sunday verdict conversation | week math (engine owns that) |
 | `skills/mother-onboarding/` | first contact, seed tasks, timezone, cron registration | the engine's defaults (config.py owns those) |
 | `skills/mother-checkup/scripts/kit/` | generic infrastructure: clock, jsonio — domain-free | anything that knows what a chore is |
-| `image/` | s6 services (agent-index reporter), TZ cont-init | gateway config, plow-init — the base's |
-| `vendor/client.pin` | which agent-index-client commit runs inside the agent | a vendored copy that drifts |
+| `image/` | TZ cont-init | gateway config, plow-init, agent-index reporter — the base's |
 | `Dockerfile` / `compose.yml` | how this content ships | base-image behavior |
 
 Sibling repos [`vigia-hermes-agent`](https://github.com/emanuellcoelho/vigia-hermes-agent)
@@ -57,7 +56,7 @@ Conventional, scoped by the table above, imperative, one concern per commit:
 `feat(engine):`, `feat(skills):`, `fix(...)`, `docs:`, `chore:`. The body
 says **why**; the diff says what. Never in a commit: `plow-credentials`,
 state files, anything under a `MOTHER_HOME`. A pin bump
-(`vendor/client.pin`, the base digest) is its own commit naming what moved
+(the base digest) is its own commit naming what moved
 and why.
 
 ## Tests
